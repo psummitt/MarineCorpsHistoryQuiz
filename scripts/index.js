@@ -69,8 +69,7 @@ function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
         element.classList.add('correct')
-        score = score + 0.5
-        document.getElementById('scoreLabel').innerHTML = "score: " + score
+        updateScore()
     } else {
         element.classList.add('wrong')
     }
@@ -79,6 +78,11 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
+}
+
+function updateScore() {
+    score += 1
+    document.getElementById('scoreLabel').innerHTML = "score: " + score
 }
 
 const questions = [
