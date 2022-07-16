@@ -1,4 +1,5 @@
 const startButton = document.getElementById('start-btn')
+const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
@@ -6,25 +7,74 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
 
 function startGame() {
     startButton.classList.add('hide')
-    shuffleQuestions = questions.sort(() => Math.random() - .5)
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
     setNextQuestion()
 }
 
 function setNextQuestion() {
+    resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
 function showQuestion(question){
     questionElement.innerText = question.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        answerButtonsElement.appendChild(button)
+    })
 }
 
-function selectAnswer() {
+function resetState() {
+    clearStatusClass(document.body)
+    nextButton.classList.add('hide')
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+    }
+}
 
+function selectAnswer(e) {
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if (shuffledQuestions.length > currentQuestionIndex + 1) {
+        nextButton.classList.remove('hide')
+    } else {
+        startButton.innerText = 'Restart'
+        startButton.classList.remove('hide')
+    }
+
+}
+
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
 }
 
 const questions = [
@@ -33,10 +83,10 @@ const questions = [
         answers: [
             { text: 'April 1, 1899', correct: false },
             { text: 'August 31, 1991', correct: false },
-            { text: 'November 11, 1776', correct: true },
+            { text: 'November 10, 1776', correct: true },
             { text: 'January 1, 1642', correct: false },
         ]
-    }
+    },
     {
         question: 'Where was the birthplace of the United States Marine Corps?',
         answers: [
@@ -45,7 +95,7 @@ const questions = [
             { text: 'Headquarters, Washington, D.C.', correct: false },
             { text: 'Parris Island, South Carolina', correct: false },
         ]
-    }
+    },
     {
         question: 'What are the three elements of the Marine Corps emblem?',
         answers: [
@@ -54,7 +104,7 @@ const questions = [
             { text: 'Eagle, Globe, and Aircraft Carrier', correct: false },
             { text: 'Eagle, Globe, and Fouled Anchor', correct: true },
         ]
-    }
+    },
     {
         question: 'During what battle did the Marines earn the nickname DevilDogs?',
         answers: [
@@ -63,7 +113,7 @@ const questions = [
             { text: 'Montezuma', correct: false },
             { text: 'Tripoli', correct: false },
         ]
-    }
+    },
     {
         question: 'Where did the term leatherneck come from?',
         answers: [

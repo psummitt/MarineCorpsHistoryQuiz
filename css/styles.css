@@ -15,7 +15,7 @@ body {
 }
 
 body.correct {
-    --bgcolor: #A77C29;
+    background-color: #A77C29;
 }
 
 body.wrong {
@@ -39,7 +39,7 @@ body.wrong {
 }
 
 .btn {
-    border: 1 px solid blue;
+    border: 1px solid blue;
     background-color: #004481;
     border-radius: 5px;
     padding: 5px 10px;
@@ -52,7 +52,7 @@ body.wrong {
 }
 
 .button.correct {
-    background-color:#004481;
+    background-color:#A77C29;
 }
 
 .button.wrong {
