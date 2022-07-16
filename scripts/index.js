@@ -5,6 +5,7 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 
 let shuffledQuestions, currentQuestionIndex
+let score = 0
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -59,6 +60,7 @@ function selectAnswer(e) {
     } else {
         startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
+        score = 0
     }
 
 }
@@ -67,6 +69,8 @@ function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
         element.classList.add('correct')
+        score = score + 0.5
+        document.getElementById('scoreLabel').innerHTML = "score: " + score
     } else {
         element.classList.add('wrong')
     }

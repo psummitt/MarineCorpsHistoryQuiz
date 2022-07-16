@@ -14,6 +14,22 @@ body {
     background-color: #004481;
 }
 
+#scoreLabel {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    color:#FFD500;
+    font-weight: bold;
+    text-align: right;
+}
+
+#pageTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24pt;
+    color:#FFD500;
+    font-weight: bold;
+    text-align: center;
+}
+
 body.correct {
     background-color: #A77C29;
 }
@@ -26,6 +42,7 @@ body.wrong {
     width: 800px;
     max-width: 80%;
     background-color: #757575;
+    color:#FFD500;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
