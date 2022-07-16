@@ -115,6 +115,51 @@ const questions = [
         ]
     },
     {
+        question: 'Where did are two Marine Corps Recruit Depots located?',
+        answers: [
+            { text: 'Hawaii and Alaska', correct: false },
+            { text: 'South Carolina and California', correct: true },
+            { text: 'Virginia and Arkansas', correct: false },
+            { text: 'Nevada and Missouri', correct: false },
+        ]
+    },
+    {
+        question: 'Which battle is not from World War II?',
+        answers: [
+            { text: 'Iwo Jima', correct: false },
+            { text: 'Tarawa', correct: false },
+            { text: 'Chosin Reservoir', correct: true },
+            { text: 'Guadalcanal', correct: false },
+        ]
+    },
+    {
+        question: 'What does the Marine Corps motto Semper Fidelis mean?',
+        answers: [
+            { text: 'working together', correct: false },
+            { text: 'always faithful', correct: true },
+            { text: 'there\'s a sucker born every minute', correct: false },
+            { text: 'beware the ides of march', correct: false },
+        ]
+    },
+    {
+        question: 'From what group did the Marines obtain the term Gung Ho from during World War II?',
+        answers: [
+            { text: 'the VietCong', correct: false },
+            { text: 'Japanese', correct: false },
+            { text: 'Chinese Communists', correct: true },
+            { text: 'South Koreans', correct: false },
+        ]
+    },
+    {
+        question: 'What is the proper term to use when referencing a Marine?',
+        answers: [
+            { text: 'Sir', correct: false },
+            { text: 'soldier', correct: false },
+            { text: 'grunt', correct: false },
+            { text: 'Marine', correct: true },
+        ]
+    },
+    {
         question: 'Where did the term leatherneck come from?',
         answers: [
             { text: 'Working in the sun', correct: false },
